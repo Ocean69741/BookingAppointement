@@ -2,5 +2,5 @@ Feature: Visit Website
 
   Scenario: Reach Example website
     Given user opens browser
-    When user navigates to "https://example.com"
-    Then title should contain "Example Domain"
+    When user navigates to "https://the-internet.herokuapp.com/"
+    Then title should contain "The Internet"
