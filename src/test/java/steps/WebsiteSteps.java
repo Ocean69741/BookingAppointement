@@ -13,7 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import utils.WordDocumentUtil;
 
-import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.Assert.assertTrue;
 
@@ -23,7 +24,10 @@ public class WebsiteSteps {
     private String currentStepText = "";
 
     public WebsiteSteps() {
-        wordDocUtil = new WordDocumentUtil("target/test-screenshots.docx");
+        // ✅ Generate filename with timestamp
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+        String filePath = "target/test-screenshots_" + timestamp + ".docx";
+        wordDocUtil = new WordDocumentUtil(filePath);
     }
 
     @Given("user opens browser")
@@ -32,7 +36,6 @@ public class WebsiteSteps {
         System.setProperty("webdriver.chrome.driver", "C://try//path//to//chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
-        // ✅ Maximize the browser window
         driver.manage().window().maximize();
     }
 
